@@ -1,0 +1,33 @@
+//Question1 
+//C-1
+all_sections(CNAM, CNUM, Set) :- findall(CSEC, course_schedule(CNAM, CNUM, CSEC, _, _, _), L), list_to_set(L,Set).
+e.g: all_sections('soen', '384',L).
+
+//C-2
+has_taken(S, [CNAM|[CNUM|[SEC|[]]]]) :- findall(SEC, takes_course(S, CNAM, CNUM, SEC), L), length(L, LL), LL>=1.
+
+//C-3
+has_taken2(S, [CNAM|[CNUM|[]]]) :- findall(CNUM, takes_course(S, CNAM, CNUM, _), L), length(L, LL), LL>=1.
+
+//C-4
+all_subjects(S,L):-findall(SUB, takes_course(S, SUB, _, _), LL), list_to_set(LL, L). 
+
+//C-5
+all_subjects(S,L):-findall(SUB, takes_course(S, SUB, _, _), LL), list_to_set(LL, L). 
+
+//C-6
+all_courses(S,L):- findall([SUB,NUM,SEC], takes_course(S,SUB,NUM,SEC), LL), list_to_set(LL, L).
+
+//C-7
+all_courses2(S,L):- findall([SUB,NUM], takes_course(S,SUB,NUM,_), LL), list_to_set(LL, L).
+
+//D
+team(X), member(S, X),
+findall([S,SUB,NUM], takes_course(S, SUB, NUM, _), L),
+list_to_set(L,LL),
+length(LL, NN),
+write(S), write(' has only taken '), write(NN),
+write(' courses and tutorials in fall 2019.'), nl, fail.
+
+//E
+the difference is that the second argument we got an empty list as a result because when unifying 40026110 we couldn't find any match 

@@ -1,4 +1,5 @@
-team(['40059460']).
+team(['40059460', '40026110']).
+student_info('40026110', 'Emile', 'Tabbakh').
 student_info('40059460', 'Nicholas', 'Nagy').
 takes_course('40059460', 'comp', '348', 'u').
 takes_course('40059460', 'comp', '348', 'ud').
@@ -8,6 +9,15 @@ takes_course('40059460', 'soen', '343', 'g').
 takes_course('40059460', 'soen', '343', 'ga').
 takes_course('40059460', 'comp', '345', 'n').
 takes_course('40059460', 'comp', '345', 'fx').
+takes_course('40026110', 'comp', '348', 'u').
+takes_course('40026110', 'comp', '348', 'ub').
+takes_course('40026110', 'comp', '353', 'f').
+takes_course('40026110', 'comp', '353', 'fa').
+takes_course('40026110', 'soen', '384', 'g').
+takes_course('40026110', 'soen', '384', 'gc').
+takes_course('40026110', 'soen', '422', 'mm').
+takes_course('40026110', 'soen', '422', 'mmee').
+takes_course('40026110', 'soen', '422', 'tt').
 course_schedule('comp', '348', 'u', 'mon', '0845', '1000').
 course_schedule('comp', '348', 'u', 'wed', '0845', '1000').
 course_schedule('comp', '348', 'u', 'fri', '0845', '0935').
@@ -19,3 +29,15 @@ course_schedule('soen', '342', 'ga', 'fri', '1615', '1705').
 course_schedule('comp', '345', 'n', 'mon', '1615', '1730').
 course_schedule('comp', '345', 'n', 'wed', '1615', '1730').
 course_schedule('comp', '345', 'fx', 'wed', '1745', '1935').
+course_schedule('comp', '348', 'u', 'mon', '0845', '1000').
+course_schedule('comp', '348', 'u', 'wed', '0845', '1000').
+course_schedule('comp', '348', 'ub', 'mon', '1015', '1105').
+course_schedule('comp', '353', 'f', 'tue', '1315', '1430').
+course_schedule('comp', '353', 'f', 'thu', '1315', '1430').
+course_schedule('comp', '353', 'fa', 'thu', '1445', '1635').
+course_schedule('soen', '384', 'g', 'wed', '1015', '1130').
+course_schedule('soen', '384', 'g', 'fri', '1015', '1130').
+course_schedule('soen', '384', 'gc', 'fri', '0845', '0935').
+course_schedule('soen', '422', 'mm', 'wed', '1745', '2015').
+course_schedule('soen', '422', 'mmee', 'wed', '2020', '2105').
+course_schedule('soen', '422', 'mmx', 'wed', '2110', '2300').

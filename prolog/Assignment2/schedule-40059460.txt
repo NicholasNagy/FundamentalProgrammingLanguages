@@ -1,0 +1,21 @@
+team(['40059460']).
+student_info('40059460', 'Nicholas', 'Nagy').
+takes_course('40059460', 'comp', '348', 'u').
+takes_course('40059460', 'comp', '348', 'ud').
+takes_course('40059460', 'soen', '342', 'hh').
+takes_course('40059460', 'soen', '342', 'hhhc').
+takes_course('40059460', 'soen', '343', 'g').
+takes_course('40059460', 'soen', '343', 'ga').
+takes_course('40059460', 'comp', '345', 'n').
+takes_course('40059460', 'comp', '345', 'fx').
+course_schedule('comp', '348', 'u', 'mon', '0845', '1000').
+course_schedule('comp', '348', 'u', 'wed', '0845', '1000').
+course_schedule('comp', '348', 'u', 'fri', '0845', '0935').
+course_schedule('soen', '342', 'hh', 'thu', '1745', '2015').
+course_schedule('soen', '342', 'hhhc', 'wed', '1445', '1535').
+course_schedule('soen', '342', 'g', 'wed', '1315', '1430').
+course_schedule('soen', '342', 'g', 'fri', '1315', '1430').
+course_schedule('soen', '342', 'ga', 'fri', '1615', '1705').
+course_schedule('comp', '345', 'n', 'mon', '1615', '1730').
+course_schedule('comp', '345', 'n', 'wed', '1615', '1730').
+course_schedule('comp', '345', 'fx', 'wed', '1745', '1935').

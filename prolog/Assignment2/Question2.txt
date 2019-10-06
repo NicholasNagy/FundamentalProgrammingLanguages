@@ -1,0 +1,47 @@
+ancestor(french(jean), B) = ancestor(A, scottish(joe)).
+This unifies to: B = scottish(joe),
+		 A = french(jean).
+
+food(bread, X) = Food(Y, soup).
+These cannot be unified because they are not the same predicate and therefore won't unify like the above unification
+
+food(bread, X, milk) = food(Y, salad, X).
+These cannot be unified because the X variable is used twice, and therefore cannot unify to two values simultaneously. 
+
+mangaer(X) = Y.
+This unifies to: Y = mangaer(X)
+
+meal(healthyFood(bread), drink(milk)) = meal(X,Y).
+This unifies to: X = healthyFood(bread),
+		 Y = drink(milk).
+
+meal(eat( Z ), drink(milk)) = meal(X,Y).
+This unifies to: X = eat(Z),
+		 Y = drink(milk).
+
+f(X, t(b, c)) = f(l, t(Z, c))
+This unifies to: X = l,
+		 Z = b.
+
+meal(healthyFood(bread), Y) = meal(X, drink(water))
+This unifies to: Y = drink(water),
+		 X = healthyFood(bread).
+
+breakfast(healthyFood(bread), egg, milk) = breakfast(healthyFood(Y), Y, Z).
+This doesn't unify, because if it did, Y would have to unify to two values, and that raises a false, because Y cannot be assigned two values.
+
+dinner(X, Y, Time) = dinner(jack, cook( egg, oil), Evening).
+This unifies to: X = jack,
+		 Y = cook(egg, oil),
+		 Time = Evening.
+
+k(s(g), Y) = k(X, t(k)).
+This unifies to: Y = t(k),
+		 X = s(g).
+
+characters(hero(luke), X) = characters(X, villain(vader)).
+This does not unify, because in this case, X would need to be assigned to two values, which is not possible, and therefore cannot be unified with one value of X and raises false.
+
+equation(Z, f(L, 17, M), L*M, 17) = equation(C, f(D, D, E), C, E).
+This unifies to: Z = C, C = 17*17,
+		 L = M, M = D, D = E, E = 17.

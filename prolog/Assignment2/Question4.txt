@@ -1,0 +1,11 @@
+//Question_1
+? magic(Hermonie).
+
+Since the atom starts with a capital letter that means we are dealing with variable, so prolog will have to look throughout the knowledge base and try to instantiate the variable X
+
+- UNIFICATION with the head of statement magic(X):- house_elf(X). 
+- INSANTIATE X to Hermonie, this will RESOLVE to new query that correspond to one goal house_elf(Hermonie).
+- This query must now be evaluated and if proved to be true then the rule will succeed hence we can instantiate the variable Hermonie.
+- UNIFICATION of the goal with the statement house_elf(dobby).
+- INSATNITATION variable Hermonie to dobby
+- RESOLVING the goal with a match and prolog will stop the search since there is a period symbol (.) at the end of the query.

@@ -1,8 +1,13 @@
 //Number 1
 ? field(hit_transfer,engineering).
-Type: 
-Result:
+Type: Ground Query
+Result:true
 Steps:
+- UNIFY the query with the head of the rule field(X, Y) :- course(X, Z), field(Z, Y).
+- INSTANTIATE X to hit_transfer, and Y to engineering
+- RESOLVE two new queries to two goals course(X, Z), field(Z, Y).
+- The first goal course(X, Z) will be UNIFIED with course(hit_transfer, mechanical). and INSTANTIATE Z to mechanical
+- The second goal field(Z, Y). will be UNIFIED with field(mechanical, engineering). and prolog will return true.
 
 //Number 2
 ? lab_number(fine_arts,X).
@@ -12,9 +17,10 @@ Steps:
 
 //Number3
 ? field(computer, literature).
-Type: 
-Result:
+Type: Ground Query
+Result: false
 Steps:
+- Prolog will try to MATCH the query against statements in the database until the database is exhausted since Prolog can't UNIFY it with any statement the result will be false
 
 //Number 4
 ? course(X,Y).
@@ -24,9 +30,14 @@ Steps:
 
 //Number 5
 ? student(adrian).
-Type: 
-Result:
+Type: Ground Query (Anonymous Variable)
+Result:true
 Steps:
+- UNIFY query with the head of student(X):- student(X,_).
+- INSTANTIATE X to adrian.
+- RESOLVE the body of the query student(X,_). which contains an Anonymous variable that can be matched with anything found in the Database.
+- It will be unified with the query student(adrian, web_design).
+- Prolog will return True.
 
 //Number 6
 ? student(anna, engineering).
@@ -34,11 +45,17 @@ Type:
 Result:
 Steps:
 
-//Number 7
+//Number 7 
 ? student(X, engineering).
-Type: 
-Result:
-Steps:
+Type: Non-ground query
+Result: X = anna
+Steps: 
+- UNIFY the query with the head of student(X, Y) :- field(Z, Y), student(X, Z). 
+- INSTANTIATING Y to engineering and resolving two goals field(Z, Y), student(X, Z). 
+- First goal field(Z, Y) will be try to match field (Z, engineering) we have three possibilities for Z: mechanical, computer, field(X,Y):- course(X, Z), field(Z, Y).
+- Mechanical and computer won't match any query so it matches with field(X,mechanical)
+- Two goals are field(Z,mechanical), student (X,Z)
+- Doing the tracing on IDE X would be anna.
 
 //Number 8
 ? student(X,fine-arts), course(fine_arts, Y).
@@ -48,9 +65,11 @@ Steps:
 
 //Number 9
 ? field(_,X).
-Type: 
-Result:
+Type: Non-ground query
+Result: X = engineering
 Steps:
+- UNIFY the query with any matched statement the first matched statement is field(mechanical,engineering). since the first argument is anonymous variable it matched with mechanical
+- X is INSTANTIATED to engineering hence the result is X = engineering.
 
 //Number 10
 ? lab_number(_,X), field(X,Y).
@@ -60,9 +79,14 @@ Steps:
 
 //Number 11
 ? lab_number(X,15), field(X,Y).
-Type: 
-Result:
+Type: Non-ground query
+Result: X = mechanical, Y = engineering
 Steps:
+- UNIFY the first query lab_number(X,15) with statement lab_number(mechanical,15). 
+- INSTANTIATE X to mechanical
+- UNIFY the second query field(mechanical,Y) with statement field(mechanical,engineering). 
+- INSTIATE Y to engineering
+- The result returned is X = mechanical, Y = engineering
 
 //Number 12
 ? student(X), !, student(X,_). % note to cut here
@@ -72,9 +96,16 @@ Steps:
 
 //Number 13
 ? student(X), student(X,_), !.
-Type: 
-Result:
+Type: Non-ground query
+Result: X = anna
 Steps:
+- UNIFY the first goal with the head of the query student(X):- student(X,_).
+- RESOLVE the goal of the body student(X,_)
+- UNIFY with the statement student(anna, hit_transfer). INSTANTIATE anonymous variable to hit_transfer.
+- INSTATIATE X to anna
+- UNIFY the second goal student(anna,_) with student(anna, hit_transfer).
+- INSTATIATE the anonymous variable to hit_transfer
+- The returned value for variable X is anna
 
 //Number 14
 ? course(X,_), \+ student(_,X). %\+ is for negation (not)

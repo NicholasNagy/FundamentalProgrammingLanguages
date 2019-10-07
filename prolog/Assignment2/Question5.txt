@@ -1,0 +1,14 @@
+From reading the knowledge base we understood the following. 
+Each family has a person (member of that family), each person has a first name, last name, date of birth, work, and salary (if he/she is employed).
+
+//Question_A
+Prolog rule totalIncome/2 to compute the total income of the family
+
+//Question_B
+Print total income of each family 
+
+//Question_C
+Print family details of each family that has income per family member less than 2000
+
+//Question_D
+Print family details fo each family where children's total income is more than their parents. 

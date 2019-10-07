@@ -1,0 +1,83 @@
+//Number 1
+? field(hit_transfer,engineering).
+Type: 
+Result:
+Steps:
+
+//Number 2
+? lab_number(fine_arts,X).
+Type: 
+Result:
+Steps:
+
+//Number3
+? field(computer, literature).
+Type: 
+Result:
+Steps:
+
+//Number 4
+? course(X,Y).
+Type: 
+Result:
+Steps:
+
+//Number 5
+? student(adrian).
+Type: 
+Result:
+Steps:
+
+//Number 6
+? student(anna, engineering).
+Type: 
+Result:
+Steps:
+
+//Number 7
+? student(X, engineering).
+Type: 
+Result:
+Steps:
+
+//Number 8
+? student(X,fine-arts), course(fine_arts, Y).
+Type: 
+Result:
+Steps:
+
+//Number 9
+? field(_,X).
+Type: 
+Result:
+Steps:
+
+//Number 10
+? lab_number(_,X), field(X,Y).
+Type: 
+Result:
+Steps:
+
+//Number 11
+? lab_number(X,15), field(X,Y).
+Type: 
+Result:
+Steps:
+
+//Number 12
+? student(X), !, student(X,_). % note to cut here
+Type: 
+Result:
+Steps:
+
+//Number 13
+? student(X), student(X,_), !.
+Type: 
+Result:
+Steps:
+
+//Number 14
+? course(X,_), \+ student(_,X). %\+ is for negation (not)
+Type: 
+Result:
+Steps:

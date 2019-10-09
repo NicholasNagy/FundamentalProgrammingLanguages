@@ -37,6 +37,7 @@ Steps:
 - INSTANTIATE X to adrian.
 - RESOLVE the body of the query student(X,_). which contains an Anonymous variable that can be matched with anything found in the Database.
 - It will be unified with the query student(adrian, web_design).
+- MISSING RESOLUTION (when we move from head to body)! 
 - Prolog will return True.
 
 //Number 6

@@ -3,6 +3,14 @@ Each family has a person (member of that family), each person has a first name, 
 
 //Question_A
 Prolog rule totalIncome/2 to compute the total income of the family
+total([],0).
+total([Person|List], Sum) :- salary(Person, S), total(List, Sum1), Sum is S+Sum1.
+
+total_income(family(Husband, Wife, Child), I) :- total([Husband,Wife | Child],I).
+
+To test: total_income(family(
+person(eric, fox, date(27,may,1970), works(bbc, 25200)), person(grace, fox, date(9,may,1971), works(ntbu, 13000)), [ person(louie, fox, date(5,may,1993), unemployed) ]), Income)
+The result would be Income: 38200.
 
 //Question_B
 Print total income of each family 

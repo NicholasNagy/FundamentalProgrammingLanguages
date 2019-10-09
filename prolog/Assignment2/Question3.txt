@@ -11,9 +11,11 @@ Steps:
 
 //Number 2
 ? lab_number(fine_arts,X).
-Type: 
-Result:
-Steps:
+Type: Non-Ground Query 
+Result: X = 10
+Steps: 
+- UNIFY the query with any value of X that has the first argument as fine_arts for the predicate lab_number.
+- In the database, this is when X = 10.
 
 //Number3
 ? field(computer, literature).
@@ -24,9 +26,24 @@ Steps:
 
 //Number 4
 ? course(X,Y).
-Type: 
-Result:
-Steps:
+Type: Non-Ground Query
+Result: X = hit_transfer,
+	Y = mechanical;
+	X = web_design,
+	Y = computer ;
+	X = design_methods,
+	Y = fine-arts ;
+	X = poetry,
+	Y = literature ;
+	X = leadership,
+	Y = management ;
+	X = biology,
+	Y = medicin.
+Steps: 
+- UNIFY the first instance in the database that matches the query. Since all the parameters in the predicate are variables, this will match the first predicate in the database. which in this case happens to be: course(hit_transfer, mechanical). 
+- INSTANTIATES X to hit_transfer, and Y to mechanical to match first predicate
+- RESOLVED as the variables as X is hit_transfer and Y as mechanical.
+- UNIFY the next instance of the database and repeat the previous steps.
 
 //Number 5
 ? student(adrian).
@@ -42,13 +59,17 @@ Steps:
 
 //Number 6
 ? student(anna, engineering).
-Type: 
-Result:
-Steps:
+Type: Ground Query
+Result: true
+Steps: 
+- UNIFY query with the first instance of student(X, Y) 
+- INSTANTIATE X to anna and Y to engineering.
+- RESOLVE to the predicate student(anna, engineering) located in the database, returning true.
+
 
 //Number 7 
 ? student(X, engineering).
-Type: Non-ground query
+Type: Non-Ground Query
 Result: X = anna
 Steps: 
 - UNIFY the query with the head of student(X, Y) :- field(Z, Y), student(X, Z). 
@@ -60,13 +81,15 @@ Steps:
 
 //Number 8
 ? student(X,fine-arts), course(fine_arts, Y).
-Type: 
-Result:
+Type: Non-Ground Query
+Result: false
 Steps:
+- UNIFY the query with any statement in the database that matches student(X, fine-arts) and course(fine_arts, Y). Since both predicate queries use separate variables, the query should resolve if student(X, fine-arts) and course(fine_arts, Y) have their variables resolved separately.
+- Since there are no fine-arts students, the query student(X, fine-arts) fails to resolve and returns false.
 
 //Number 9
 ? field(_,X).
-Type: Non-ground query
+Type: Non-Ground Query
 Result: X = engineering
 Steps:
 - UNIFY the query with any matched statement the first matched statement is field(mechanical,engineering). since the first argument is anonymous variable it matched with mechanical
@@ -74,13 +97,16 @@ Steps:
 
 //Number 10
 ? lab_number(_,X), field(X,Y).
-Type: 
-Result:
-Steps:
+Type: Non-Ground Query
+Result: false
+Steps: 
+- For every lab_number predicate in the database, prolog will attempt to unify it with every field predicate in the database. 
+- It will only resolve if the second parameter in a lab_number predicate in the database is the same as any of the first parameters of the field predicates in the database.
+- Since there are none, prolog resolves to false.
 
 //Number 11
 ? lab_number(X,15), field(X,Y).
-Type: Non-ground query
+Type: Non-Ground Query
 Result: X = mechanical, Y = engineering
 Steps:
 - UNIFY the first query lab_number(X,15) with statement lab_number(mechanical,15). 
@@ -91,13 +117,28 @@ Steps:
 
 //Number 12
 ? student(X), !, student(X,_). % note to cut here
-Type: 
-Result:
-Steps:
+Type: Non-Ground Query
+Result: X = anna;
+	X = anna;
+	false
+Steps: 
+- UNIFY the first goal with the head of the query as student(X):- student(X,_).
+- RESOLVE the goal of the body with student(X,_).
+- UNIFY with the statement student(anna, hit_transfer). INSTANTIATE anonymous variable to hit_transfer.
+- INSTANTIATE X to anna
+- UNIFY the second goal student(anna,_) with student(anna, hit_transfer).
+- INSTANTIATE the anonymous variable to hit_transfer
+- The returned value for variable X is anna, but the second goal continues backtracking.
+- UNIFY second goal with field(Z, Y) (we will call third goal), and  student(X, Z) (we will call fourth goal).
+- UNIFY third goal with course(Z, W)(fifth goal), field(W, Y) (sixth goal).
+- UNIFY fifth goal with course(hit_transfer, mechanical). and the sixth goal with field(mechanical, engineering) to third goal field(hit_transfer, engineering).
+- UNIFY fourth goal to student(anna, hit_transfer).
+- UNIFY second goal a second time with third goal as field(hit_transfer, engineering) and fourth goal as student(anna, hit_transfer) to the second goal of student(anna, engineering). 
+- INSTANTIATE X to anna, but prolog returns false, because it cannot backtrack the first goal.
 
 //Number 13
 ? student(X), student(X,_), !.
-Type: Non-ground query
+Type: Non-Ground Query
 Result: X = anna
 Steps:
 - UNIFY the first goal with the head of the query student(X):- student(X,_).
@@ -110,6 +151,10 @@ Steps:
 
 //Number 14
 ? course(X,_), \+ student(_,X). %\+ is for negation (not)
-Type: 
-Result:
+Type: Non-Ground Query
+Result: X = biology
 Steps:
+- UNIFY the first goal with course(X,_) as course(biology,medicin).
+- RESOLVE the goal of the body course(X,_)
+- INSTANTIATE X to biology
+- Attempt to unify student(_,X), and if it fails to unify it, then returns the statement as true, and the statement returns X = biology.

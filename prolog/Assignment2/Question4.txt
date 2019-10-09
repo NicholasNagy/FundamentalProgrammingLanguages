@@ -9,3 +9,16 @@ Since the atom starts with a capital letter that means we are dealing with varia
 - UNIFICATION of the goal with the statement house_elf(dobby).
 - INSATNITATION variable Hermonie to dobby
 - RESOLVING the goal with a match and prolog will stop the search since there is a period symbol (.) at the end of the query.
+
+
+
+? magic(hermione).
+
+Since the atom starts with a lower case letter, that means prolog will look through the database and try to find a match for the atom.
+
+- Since there are no matches in the first 5 predicates, prolog will skip over them, and UNIFY at the sixth line, which is a rule, where magic(X):- house_elf(X).
+- Now prolog will look through the database again and try to find a match for the new predicate house_elf(hermione), after INSTANTIATING X as hermione.
+- It does not find a match for house_elf(hermione), so it BACKTRACKS and UNIFIES the next rule of magic(X) :- wizard(X).
+- Prolog will then again try to find a match for wizard(hermione), after INSTANTIATING the X as hermione, in the database, but again fails, and BACKTRACKS.
+- Prolog then BACKTRACKS again and unifies the last rule of magic(X):- witch(X), for which it derives the predicate witch(X) and INSTANTIATES X to hermione.
+- Now when prolog goes through the list of predicates in the database, it will stop at the second predicate after finding a match and RESOLVING the goal to true.

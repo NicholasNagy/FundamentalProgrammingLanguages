@@ -4,9 +4,9 @@ Each family has a person (member of that family), each person has a first name, 
 //Question_A
 Prolog rule totalIncome/2 to compute the total income of the family
 total([],0).
-total([Person|List], Sum) :- salary(Person, S), total(List, Sum1), Sum is S+Sum1.
+total([Person|List], Sum) :- salary(Person, S), total(List, Sum1), Sum is S+Sum1. %This will give us income of all families.
 
-total_income(family(Husband, Wife, Child), I) :- total([Husband,Wife | Child],I).
+total_income(family(Husband, Wife, Child), I) :- total([Husband,Wife | Child],I). %To get the income per family.
 
 To test: total_income(family(
 person(eric, fox, date(27,may,1970), works(bbc, 25200)), person(grace, fox, date(9,may,1971), works(ntbu, 13000)), [ person(louie, fox, date(5,may,1993), unemployed) ]), Income)
@@ -17,6 +17,12 @@ Print total income of each family
 
 //Question_C
 Print family details of each family that has income per family member less than 2000
+The whole idea is to loop through each family and get the income of the whole family and store it in variable 'I' then will see how many family member each family has and we store that in variable 'N', then the final rule is we only get the family details that will satisfy the rule of I divided by N less than 2000.
+
+family(Husband, Wife, Children),		%unify with family rule.
+total([Husband, Wife | Children], I),		%unify with total rule written in part A.
+length([Husband, Wife | Children],N), 		%built in function we use it to get how many family members we have.
+I/N <2500. 					%last rule to make sure we only display family details which has income per family member less than 2000.
 
 //Question_D
 Print family details fo each family where children's total income is more than their parents. 

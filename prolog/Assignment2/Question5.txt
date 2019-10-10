@@ -14,6 +14,8 @@ The result would be Income: 38200.
 
 //Question_B
 Print total income of each family 
+?- family(X, Y, Z), total_income(family(X, Y, Z), Income). 
+
 
 //Question_C
 Print family details of each family that has income per family member less than 2000
@@ -26,3 +28,5 @@ I/N <2500. 					%last rule to make sure we only display family details which has
 
 //Question_D
 Print family details fo each family where children's total income is more than their parents. 
+
+family(Husband, Wife, Children), total([Husband, Wife], ParentIncome), total(Children, ChildrenIncome), ChildrenIncome > ParentIncome.

@@ -14,7 +14,8 @@ The result would be Income: 38200.
 
 //Question_B
 Print total income of each family 
-?- family(X, Y, Z), total_income(family(X, Y, Z), Income). 
+?- family(X, Y, Z), % unify with family rule
+total_income(family(X, Y, Z), Income). % get total_income using previously created rule.
 
 
 //Question_C
@@ -29,4 +30,7 @@ I/N <2500. 					%last rule to make sure we only display family details which has
 //Question_D
 Print family details fo each family where children's total income is more than their parents. 
 
-family(Husband, Wife, Children), total([Husband, Wife], ParentIncome), total(Children, ChildrenIncome), ChildrenIncome > ParentIncome.
+family(Husband, Wife, Children), % Unify with family rule.
+total([Husband, Wife], ParentIncome), % get parent income with total rule
+total(Children, ChildrenIncome), % get children income with total rule
+ChildrenIncome > ParentIncome. % last rule to compare the incomes and return only the families with the parents' income less than their childrens'

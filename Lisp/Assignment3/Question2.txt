@@ -1,13 +1,20 @@
 (defun triangle(n)
-(if (and(integerp n) (oddp n)) ;First if checking wheter the passed number is an integer and odd
+(if (and (integerp n) (oddp n)) ;First if checking wheter the passed number is an integer and odd
 (loop for i from 1 to n        ;First for loop to know how many lines we have to print.
-do (loop for j from 1 to i     ;Second for loop to know how many number per line we hav to print
-do (write j)
-(princ " "))                   ;Printing empty space between numbers
-(write-line ""))               ;Jump to the next line 
-    
-(if (evenp n)                  ;Second if statement to check if the number is even so that we print an error message.
-    (write "even numbers are not valid input, please enter an odd integer")
-(write "Decimal numbers are not valid input, Please enter an integer")))
+do (if (oddp i) (loop for j from 1 to i     ;Second for loop to know how many number per line we hav to print
+do (if (oddp j) (progn (write j)
+(princ " ")) (princ ""))))                   ;Printing empty space between numbers
+(if (oddp i) (write-line "")))               ;Jump to the next line
+
+(cond ((not (integerp n)) (write "Decimal numbers are not valid input, Please enter an integer"))
+    ((evenp n)                  ;Second if statement to check if the number is even so that we print an error message.
+      (write "even numbers are not valid input, please enter an odd integer"))
+))
 )
 (triangle 4)
+(write-line "")
+(triangle 9)
+(write-line "")
+(triangle 9.5)
+(write-line "")
+(triangle 11)

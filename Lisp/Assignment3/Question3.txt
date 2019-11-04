@@ -18,3 +18,35 @@
 
 (print '(1 2 (3 1) (a) (a 2.5) (2 4.5) ((1 2))))
 (print ( flattened_list'(1 2 (3 1) (a) (bb) (a) (a 2.5) (2 4.5) ((1 2)))))
+
+
+;PART B
+
+;My function that takes a list and return a list that does not contain any duplicates
+(defun my-eliminateDuplicates (L)
+(rev L)
+(cond ((null L) L)
+((member (car L) (cdr L))
+(my-eliminateDuplicates (cdr L)))
+(t (cons (car L) (my-eliminateDuplicates (cdr L))))))
+
+(defun rev (l)
+(cond ((null l) '())
+(T (append (rev (cdr l)) (list (car l)))))) 
+
+(defun flattened_list(lst)
+   (cond ((null lst) nil)
+       ((atom (car lst))
+           ; check if atom number or not
+           (cond ((not(numberp (car lst))) (flattened_list (cdr lst)))
+               ; if a number we add 
+               (t (cons (car lst) (flattened_list (cdr lst))))))
+       ; if (car element) is not atom
+       (t (append (flattened_list (car lst)) (flattened_list(cdr lst))))))
+
+
+(defun flattened_list_2 (l)
+    (rev(my-eliminateDuplicates(rev(flattened_list l)))))
+
+
+(print (flattened_list_2 '(1 2 (3 1) (a) (bb) (a) (a 2.5) (2 4.5) ((1 2)))))

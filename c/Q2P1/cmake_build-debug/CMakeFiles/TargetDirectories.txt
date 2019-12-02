@@ -1,0 +1,3 @@
+/Users/nicholasnagy/CLionProjects/Question2Part1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nicholasnagy/CLionProjects/Question2Part1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nicholasnagy/CLionProjects/Question2Part1/cmake-build-debug/CMakeFiles/Question2Part1.dir

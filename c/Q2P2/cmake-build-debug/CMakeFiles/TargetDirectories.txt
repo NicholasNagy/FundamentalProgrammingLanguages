@@ -1,0 +1,3 @@
+/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/cmake-build-debug/CMakeFiles/Q2P2.dir

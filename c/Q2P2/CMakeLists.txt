@@ -3,4 +3,4 @@ project(Q2P2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Q2P2 main.cpp)
+add_executable(Q2P2 main.c)

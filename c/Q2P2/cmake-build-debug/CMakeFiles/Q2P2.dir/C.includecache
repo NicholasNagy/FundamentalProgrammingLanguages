@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/main.c
+stdio.h
+-
+stdbool.h
+-
+

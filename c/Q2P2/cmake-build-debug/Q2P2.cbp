@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/main.cpp">
+		<Unit filename="/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/main.c">
 			<Option target="Q2P2"/>
 		</Unit>
 		<Unit filename="/Users/nicholasnagy/CLionProjects/FundamentalProgrammingLanguages/c/Q2P2/CMakeLists.txt">
